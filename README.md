@@ -143,14 +143,10 @@ npm run dev
 
 生产环境：[https://spot-aide.vercel.app](https://spot-aide.vercel.app)
 
-部署在 Vercel，公网可访问，不需要本机开着开发服务。部分网络访问 `vercel.app` 不稳定，可改用手机流量打开。
-
 线上环境变量：
 
 - `DEEPSEEK_API_KEY`：模型调用
 - `TURSO_DATABASE_URL` / `TURSO_AUTH_TOKEN`：读写商家、场次和选择
 - `DATABASE_URL`：构建时给 Prisma 的占位（本地 sqlite 路径即可）
-
-没有人使用时服务会休眠，不会持续消耗模型额度。有人走完「解析 → 推荐 / 追问 / 洞察」才会请求 DeepSeek。链接是公开的，任何人完成推荐流程都会使用该密钥的额度。
-
-演示脚本（约 3 分钟）：见 [docs/demo-script.md](docs/demo-script.md)。产品需求文档：见 [docs/prd.md](docs/prd.md)。核心 Prompt 迭代：见 [docs/prompt-iteration.md](docs/prompt-iteration.md)。模拟数据设计：见 [docs/data-design.md](docs/data-design.md)。竞品分析（点评 AI / 小红书 / 小团）：见 [docs/competitive-analysis.md](docs/competitive-analysis.md)。高保真原型（HTML，可导入 Figma / Axure）：见 [docs/prototype/](docs/prototype/)。美团 AI 产品 Builder 面试策略：见 [docs/interview-strategy.md](docs/interview-strategy.md)。
+- 
+产品需求文档：见 [docs/prd.md](docs/prd.md)。核心 Prompt 迭代：见 [docs/prompt-iteration.md](docs/prompt-iteration.md)。模拟数据设计：见 [docs/data-design.md](docs/data-design.md)。竞品分析（点评 AI / 小红书 / 小团）：见 [docs/competitive-analysis.md](docs/competitive-analysis.md)。高保真原型（HTML，可导入 Figma / Axure）：见 [docs/prototype/](docs/prototype/)。
