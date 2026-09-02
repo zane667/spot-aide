@@ -1,5 +1,5 @@
 /**
- * DeepSeek System Prompt，原文摘自 docs/plan.md，并锁死 JSON 键名。
+ * DeepSeek System Prompt，终版见 docs/prompt-iteration.md，并锁死 JSON 键名。
  * `{name}` 为运行时参数，调用 fillPrompt 替换。
  */
 
