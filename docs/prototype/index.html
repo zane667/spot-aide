@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>探店参谋 · 高保真原型</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-view="flow">
+  <header class="proto-bar">
+    <strong>探店参谋</strong>
+    <span class="sep">·</span>
+    <span style="font-size:12px;color:#ccc">高保真原型</span>
+    <button type="button" class="mode-btn is-on" data-mode="flow">点击演示</button>
+    <button type="button" class="mode-btn" data-mode="board">画板导入</button>
+    <button type="button" class="nav-btn is-current" data-nav="home">01 首页</button>
+    <button type="button" class="nav-btn" data-nav="confirm">02 确认</button>
+    <button type="button" class="nav-btn" data-nav="analyzing">03 分析中</button>
+    <button type="button" class="nav-btn" data-nav="results">04 结果</button>
+    <button type="button" class="nav-btn" data-nav="followup">05 追问</button>
+    <button type="button" class="nav-btn" data-nav="merchant">06 商户视角</button>
+    <button type="button" class="nav-btn" data-nav="thanks">07 感谢</button>
+    <span class="proto-hint">画板视图用于导入 Figma / Axure · 390px 画板</span>
+  </header>
+
+  <div class="workspace">
+
+    <!-- 01 首页 -->
+    <section class="frame is-active" data-screen="home">
+      <p class="frame-label">01 首页 · 390 × auto</p>
+      <div class="artboard">
+        <div class="glow"></div>
+        <header class="topbar">
+          <div class="brand"><span class="logo">探</span>探店参谋</div>
+          <p class="meta">基于评价的探店决策</p>
+        </header>
+        <main class="page center">
+          <h1 class="h-hero">想吃什么，一句话告诉我</h1>
+          <div class="search">
+            <label class="sr" for="home-query">探店需求</label>
+            <input id="home-query" type="text" placeholder="带父母吃饭，要安静有包间…" value="" />
+            <button type="button" class="btn btn-brand" data-go="confirm" id="ask-btn" style="opacity:.4">问问</button>
+          </div>
+          <div class="chips">
+            <button type="button" class="chip" data-fill="周末约会，要安静，人均150到200">周末约会</button>
+            <button type="button" class="chip" data-fill="同事聚餐，人均100左右，不要太辣">同事聚餐</button>
+            <button type="button" class="chip" data-fill="带4岁小孩，预算200，想吃粤菜，要有包间">家庭聚餐</button>
+            <button type="button" class="chip" data-fill="一个人随便吃，家常菜就行">一个人随便吃</button>
+          </div>
+
+          <section class="picks">
+            <p class="kicker">最近别人更常去</p>
+            <button type="button" class="pick" data-fill="带4岁小孩，预算200，想吃粤菜，要有包间">
+              <span><b>白玉粤菜</b><span>徐家汇 · 粤菜 · 人均188</span></span>
+              <span class="pill-rate">选择率 62%</span>
+            </button>
+            <button type="button" class="pick" data-fill="周末约会，要安静，人均150到200">
+              <span><b>半山料理</b><span>静安寺 · 日料 · 人均226</span></span>
+              <span class="pill-rate">选择率 58%</span>
+            </button>
+            <button type="button" class="pick" data-fill="同事聚餐，人均100左右，不要太辣">
+              <span><b>南苑小馆</b><span>五角场 · 家常菜 · 人均68</span></span>
+              <span class="pill-rate">选择率 51%</span>
+            </button>
+          </section>
+
+          <section class="mt-8" style="width:100%">
+            <p class="kicker">参谋怎么找店</p>
+            <div class="steps">
+              <article class="step"><span class="num">1</span><h2>说人话</h2><p>场景、预算、口味一句话就行</p></article>
+              <article class="step"><span class="num">2</span><h2>读评价</h2><p>从评价里提标签和避坑，不编理由</p></article>
+              <article class="step"><span class="num">3</span><h2>给决策</h2><p>Top 3、原文引用，再记下你去了哪</p></article>
+            </div>
+          </section>
+        </main>
+      </div>
+    </section>
+
+    <!-- 02 确认 -->
+    <section class="frame" data-screen="confirm">
+      <p class="frame-label">02 标签确认 · 390 × auto</p>
+      <div class="artboard">
+        <div class="glow short"></div>
+        <header class="topbar">
+          <div class="brand"><span class="logo">探</span>探店参谋</div>
+          <p class="meta">基于评价的探店决策</p>
+        </header>
+        <main class="page">
+          <p class="kicker">你刚才说</p>
+          <p class="sm mt-2">「带4岁小孩，预算200，想吃粤菜，要有包间」</p>
+          <h1 class="h-page mt-6">我理解成这些条件</h1>
+          <p class="sub">点标签就能改，空着的可以补上</p>
+          <div class="chips" style="justify-content:flex-start;margin-top:16px">
+            <span class="tag">家庭</span>
+            <span class="tag">人均200</span>
+            <span class="tag">粤菜</span>
+            <span class="tag">包间</span>
+          </div>
+          <div class="chips" style="justify-content:flex-start;margin-top:8px">
+            <span class="tag tag-dash">+ 口味</span>
+            <span class="tag tag-dash">+ 氛围</span>
+            <span class="tag tag-dash">+ 人数</span>
+            <span class="tag tag-dash">+ 时间</span>
+            <span class="tag tag-dash">+ 位置</span>
+          </div>
+          <p class="card card-soft card-pad mt-5 sm muted">提到 4 岁小孩，推断家庭聚餐；预算 200 记为人均；粤菜和包间是明确提出的。未提及口味、氛围和商圈，保持空缺，不编造。</p>
+          <button type="button" class="btn btn-brand btn-full mt-5" data-go="analyzing">按这个找店</button>
+        </main>
+      </div>
+    </section>
+
+    <!-- 03 分析中 -->
+    <section class="frame" data-screen="analyzing">
+      <p class="frame-label">03 分析中 · 390 × auto</p>
+      <div class="artboard">
+        <div class="glow short"></div>
+        <header class="topbar">
+          <div class="brand"><span class="logo">探</span>探店参谋</div>
+          <p class="meta">基于评价的探店决策</p>
+        </header>
+        <main class="page">
+          <div class="card card-soft card-pad">
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <i class="bone" style="display:block;height:28px;width:64px"></i>
+              <i class="bone" style="display:block;height:28px;width:72px"></i>
+              <i class="bone" style="display:block;height:28px;width:56px"></i>
+              <i class="bone" style="display:block;height:28px;width:48px"></i>
+            </div>
+          </div>
+          <div class="card card-pad mt-4">
+            <i class="bone" style="display:block;height:12px;width:64px"></i>
+            <i class="bone" style="display:block;height:40px;width:100%;margin-top:12px"></i>
+          </div>
+          <article class="card card-pad shadow mt-4">
+            <i class="bone" style="display:block;height:10px;width:28px"></i>
+            <i class="bone" style="display:block;height:20px;width:128px;margin-top:8px"></i>
+            <i class="bone" style="display:block;height:12px;width:160px;margin-top:8px"></i>
+            <i class="bone" style="display:block;height:12px;width:56px;margin-top:20px"></i>
+            <i class="bone" style="display:block;height:14px;width:100%;margin-top:8px"></i>
+            <i class="bone" style="display:block;height:14px;width:80%;margin-top:8px"></i>
+            <div class="radar-wrap mt-5"><i class="bone" style="width:148px;height:148px;border-radius:999px"></i></div>
+          </article>
+          <p class="center-text xs muted mt-5">正在分析 5 家店的评价…</p>
+        </main>
+      </div>
+    </section>
+
+    <!-- 04 结果 -->
+    <section class="frame" data-screen="results">
+      <p class="frame-label">04 推荐结果 · 390 × auto</p>
+      <div class="artboard">
+        <div class="glow short"></div>
+        <header class="topbar">
+          <div class="brand"><span class="logo">探</span>探店参谋</div>
+          <p class="meta">基于评价的探店决策</p>
+        </header>
+        <main class="page">
+          <div class="h-row">
+            <h1>为你找的店</h1>
+            <span class="info-btn"><span class="info-dot">i</span>AI 分析说明</span>
+          </div>
+          <section class="card card-soft card-pad mt-4">
+            <p class="kicker">按这些条件找的店</p>
+            <div class="chips" style="justify-content:flex-start;margin-top:8px">
+              <span class="tag tag-sm">家庭</span>
+              <span class="tag tag-sm">人均200</span>
+              <span class="tag tag-sm">粤菜</span>
+              <span class="tag tag-sm">包间</span>
+            </div>
+          </section>
+
+          <section class="card card-pad mt-4">
+            <p class="kicker">继续追问</p>
+            <p class="xs muted mt-2">例如：第一家有没有适合小孩的菜？</p>
+            <div class="chat-form">
+              <input type="text" placeholder="再问一句…" readonly />
+              <button type="button" class="btn btn-brand" data-go="followup">发送</button>
+            </div>
+          </section>
+
+          <article class="card card-pad shadow mt-4">
+            <div class="row">
+              <div>
+                <p class="xs muted">#1</p>
+                <h2 class="h-page" style="font-size:18px">白玉粤菜</h2>
+                <p class="xs muted mt-2">徐家汇 · 粤菜 · 人均188</p>
+              </div>
+              <div class="right">
+                <span class="pill-match">匹配 0.86</span>
+                <span class="pill-rate">选择率 62%</span>
+              </div>
+            </div>
+            <p class="kicker mt-4">推荐理由</p>
+            <p class="sm mt-2">评价里多次提到有包间、适合带小孩和老人，白切鸡清淡，人均也落在 200 附近。家庭聚餐这条和你今晚的条件对得上。</p>
+            <p class="kicker mt-4">评价原文</p>
+            <blockquote class="quote mt-2">「第二次来了，有包间，适合家庭聚餐，煲汤喝完还想续 推一个。」</blockquote>
+            <blockquote class="quote mt-2">「白切鸡皮脆肉嫩，适合周末家庭聚餐，小孩也有得吃。」</blockquote>
+            <button type="button" class="btn btn-ghost mt-4" data-go="thanks">我就去这家</button>
+            <p class="xs muted mt-5">五维来自评价语义，不是官方星级</p>
+            <div class="radar-wrap">
+              <svg viewBox="0 0 280 248" role="img" aria-label="评价五维">
+                <polygon points="140.00,112.40 154.84,123.18 149.17,140.62 130.83,140.62 125.16,123.18" fill="none" stroke="#1a1a1a" stroke-opacity="0.06"/>
+                <polygon points="140.00,96.80 169.67,118.36 158.34,153.24 121.66,153.24 110.33,118.36" fill="none" stroke="#1a1a1a" stroke-opacity="0.06"/>
+                <polygon points="140.00,81.20 184.51,113.54 167.51,165.86 112.49,165.86 95.49,113.54" fill="none" stroke="#1a1a1a" stroke-opacity="0.06"/>
+                <polygon points="140.00,65.60 199.35,108.72 176.68,178.48 103.32,178.48 80.65,108.72" fill="none" stroke="#1a1a1a" stroke-opacity="0.06"/>
+                <polygon points="140.00,50.00 214.18,103.90 185.85,191.10 94.15,191.10 65.82,103.90" fill="none" stroke="#1a1a1a" stroke-opacity="0.12" stroke-width="1.2"/>
+                <line x1="140" y1="128" x2="140.00" y2="50.00" stroke="#1a1a1a" stroke-opacity="0.08"/>
+                <line x1="140" y1="128" x2="214.18" y2="103.90" stroke="#1a1a1a" stroke-opacity="0.08"/>
+                <line x1="140" y1="128" x2="185.85" y2="191.10" stroke="#1a1a1a" stroke-opacity="0.08"/>
+                <line x1="140" y1="128" x2="94.15" y2="191.10" stroke="#1a1a1a" stroke-opacity="0.08"/>
+                <line x1="140" y1="128" x2="65.82" y2="103.90" stroke="#1a1a1a" stroke-opacity="0.08"/>
+                <polygon points="140.00,65.60 199.35,108.72 172.09,172.17 107.91,172.17 73.24,106.31" fill="#ffd100" fill-opacity="0.42" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/>
+                <circle cx="140.00" cy="65.60" r="3" fill="#ffd100" stroke="#1a1a1a"/>
+                <circle cx="199.35" cy="108.72" r="3" fill="#ffd100" stroke="#1a1a1a"/>
+                <circle cx="172.09" cy="172.17" r="3" fill="#ffd100" stroke="#1a1a1a"/>
+                <circle cx="107.91" cy="172.17" r="3" fill="#ffd100" stroke="#1a1a1a"/>
+                <circle cx="73.24" cy="106.31" r="3" fill="#ffd100" stroke="#1a1a1a"/>
+                <text x="140.00" y="22" text-anchor="middle" fill="#737373" font-size="11">出品 <tspan fill="#1a1a1a" font-weight="600">8</tspan></text>
+                <text x="237.01" y="100" text-anchor="start" fill="#737373" font-size="11">环境 <tspan fill="#1a1a1a" font-weight="600">8</tspan></text>
+                <text x="199.95" y="222" text-anchor="middle" fill="#737373" font-size="11">服务 <tspan fill="#1a1a1a" font-weight="600">7</tspan></text>
+                <text x="80.05" y="222" text-anchor="middle" fill="#737373" font-size="11">性价比 <tspan fill="#1a1a1a" font-weight="600">7</tspan></text>
+                <text x="42.99" y="100" text-anchor="end" fill="#737373" font-size="11">场景 <tspan fill="#1a1a1a" font-weight="600">9</tspan></text>
+              </svg>
+            </div>
+            <div class="warn">
+              <p class="kicker">避坑提醒</p>
+              <p class="sm mt-2">周末早茶要排队，包间建议提前打电话。停车要绕一下，地铁更方便。</p>
+            </div>
+            <button type="button" class="btn btn-ghost mt-4" style="font-size:12px" data-go="merchant">切换商户视角</button>
+          </article>
+
+          <article class="card card-pad shadow mt-4">
+            <div class="row">
+              <div>
+                <p class="xs muted">#2</p>
+                <h2 class="h-page" style="font-size:18px">金桂粤菜</h2>
+                <p class="xs muted mt-2">静安寺 · 粤菜 · 人均208</p>
+              </div>
+              <div class="right">
+                <span class="pill-match">匹配 0.74</span>
+                <span class="pill-rate">选择率 55%</span>
+              </div>
+            </div>
+            <p class="kicker mt-4">推荐理由</p>
+            <p class="sm mt-2">蒸点出品稳，有包间。人均略高于 200，适合你愿意稍稍上浮预算的时候。</p>
+            <p class="kicker mt-4">评价原文</p>
+            <blockquote class="quote mt-2">「蒸点出品稳，虾饺皮薄，周末早茶要早点来。」</blockquote>
+            <button type="button" class="btn btn-ghost mt-4" data-go="thanks">我就去这家</button>
+            <div class="warn">
+              <p class="kicker">避坑提醒</p>
+              <p class="sm mt-2">周末人多，想安静就别这时候来。包间要预订。</p>
+            </div>
+          </article>
+
+          <section class="card card-pad mt-4">
+            <p class="kicker">差距说明</p>
+            <p class="sm mt-2">候选里有几家氛围偏热闹或没坐实包间，没有放进推荐。湘菜和家常馆只写在差距里，避免圆场。</p>
+          </section>
+
+          <section class="card card-pad shadow mt-4">
+            <p class="kicker">吃完了？告诉参谋你去了哪</p>
+            <p class="sm mt-2">点卡片上的「我就去这家」，或搜索库里已有的店名。本轮只能记一家。</p>
+            <input class="field mt-3" style="width:100%" placeholder="搜索库内店名，例如 巷口火锅" />
+            <button type="button" class="btn btn-brand mt-3" disabled style="opacity:.4">确认去这家</button>
+          </section>
+        </main>
+      </div>
+    </section>
+
+    <!-- 05 追问 -->
+    <section class="frame" data-screen="followup">
+      <p class="frame-label">05 多轮追问 · 390 × auto</p>
+      <div class="artboard">
+        <div class="glow short"></div>
+        <header class="topbar">
+          <div class="brand"><span class="logo">探</span>探店参谋</div>
+          <p class="meta">基于评价的探店决策</p>
+        </header>
+        <main class="page">
+          <div class="h-row"><h1>为你找的店</h1></div>
+          <section class="card card-soft card-pad mt-4">
+            <div class="chips" style="justify-content:flex-start">
+              <span class="tag tag-sm">家庭</span>
+              <span class="tag tag-sm">人均200</span>
+              <span class="tag tag-sm">粤菜</span>
+              <span class="tag tag-sm">包间</span>
+            </div>
+          </section>
+          <section class="card card-pad mt-4">
+            <p class="kicker">继续追问</p>
+            <p class="xs muted mt-2">仍基于本轮评价与推荐，不编菜单</p>
+            <div class="chat">
+              <div class="bubble me">第一家有没有适合小孩的菜？</div>
+              <div class="bubble bot">白玉粤菜的评价里有「适合周末家庭聚餐，小孩也有得吃」，没有写具体儿童菜单或儿童餐价位。评价里没提到的菜名，建议到店确认。</div>
+            </div>
+            <div class="chat-form">
+              <input type="text" placeholder="再问一句…" />
+              <button type="button" class="btn btn-brand" data-go="results">发送</button>
+            </div>
+          </section>
+          <article class="card card-pad shadow mt-4">
+            <p class="xs muted">#1 · 白玉粤菜</p>
+            <p class="sm mt-2">卡片仍在下方，追问不另开聊天去编菜单。</p>
+            <button type="button" class="btn btn-ghost mt-4" data-go="thanks">我就去这家</button>
+          </article>
+        </main>
+      </div>
+    </section>
+
+    <!-- 06 商户视角 -->
+    <section class="frame" data-screen="merchant">
+      <p class="frame-label">06 商户视角 · 390 × auto</p>
+      <div class="artboard">
+        <div class="glow short"></div>
+        <header class="topbar">
+          <div class="brand"><span class="logo">探</span>探店参谋</div>
+          <p class="meta">基于评价的探店决策</p>
+        </header>
+        <main class="page">
+          <div class="h-row"><h1>为你找的店</h1></div>
+          <article class="card card-pad shadow mt-4">
+            <p class="xs muted">#1</p>
+            <h2 class="h-page" style="font-size:18px">白玉粤菜</h2>
+            <p class="xs muted mt-2">徐家汇 · 粤菜 · 人均188</p>
+            <p class="sm mt-4">同一份评价，换商户角色读：顾客在意什么、差评集中在哪。</p>
+            <button type="button" class="btn btn-ghost mt-4" style="font-size:12px" data-go="results">回到顾客视角</button>
+            <div class="merchant-box">
+              <p class="kicker">经营洞察 · CatPaw</p>
+              <p class="mt-3"><span class="xs muted">顾客最在意</span><br />包间、清淡出品、带老人小孩是否吃得动</p>
+              <p class="mt-3"><span class="xs muted">差评集中在</span><br />周末排队、停车要绕、高峰要预订包间</p>
+              <p class="mt-3"><span class="xs muted">差异化优势</span><br />家庭聚餐、煲汤、白切鸡出品稳</p>
+              <p class="mt-3"><span class="xs muted">需要警惕</span><br />周末早茶等位会劝退带小孩的家庭</p>
+              <div class="radar-wrap compact mt-3">
+                <svg viewBox="0 0 232 210" role="img">
+                  <polygon points="116.00,96.60 127.79,105.17 123.29,119.03 108.71,119.03 104.21,105.17" fill="none" stroke="#1a1a1a" stroke-opacity="0.06"/>
+                  <polygon points="116.00,84.20 139.59,101.34 130.58,129.06 101.42,129.06 92.41,101.34" fill="none" stroke="#1a1a1a" stroke-opacity="0.06"/>
+                  <polygon points="116.00,71.80 151.38,97.50 137.87,139.10 94.13,139.10 80.62,97.50" fill="none" stroke="#1a1a1a" stroke-opacity="0.06"/>
+                  <polygon points="116.00,59.40 163.17,93.67 145.15,149.13 86.85,149.13 68.83,93.67" fill="none" stroke="#1a1a1a" stroke-opacity="0.06"/>
+                  <polygon points="116.00,47.00 174.97,89.84 152.44,159.16 79.56,159.16 57.03,89.84" fill="none" stroke="#1a1a1a" stroke-opacity="0.12"/>
+                  <polygon points="116.00,59.40 163.17,93.67 141.51,144.11 90.49,144.11 62.93,91.76" fill="#ffd100" fill-opacity="0.42" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/>
+                  <text x="116" y="22" text-anchor="middle" fill="#737373" font-size="10">出品 <tspan fill="#1a1a1a" font-weight="600">8</tspan></text>
+                  <text x="194" y="86" text-anchor="start" fill="#737373" font-size="10">环境 8</text>
+                  <text x="164" y="188" text-anchor="middle" fill="#737373" font-size="10">服务 7</text>
+                  <text x="68" y="188" text-anchor="middle" fill="#737373" font-size="10">性价比 7</text>
+                  <text x="38" y="86" text-anchor="end" fill="#737373" font-size="10">场景 9</text>
+                </svg>
+              </div>
+            </div>
+          </article>
+        </main>
+      </div>
+    </section>
+
+    <!-- 07 感谢 -->
+    <section class="frame" data-screen="thanks">
+      <p class="frame-label">07 感谢页 · 390 × auto</p>
+      <div class="artboard">
+        <div class="glow short"></div>
+        <header class="topbar">
+          <div class="brand"><span class="logo">探</span>探店参谋</div>
+          <p class="meta">基于评价的探店决策</p>
+        </header>
+        <main class="page center" style="padding-top:32px">
+          <section class="card card-pad shadow center-text" style="padding:40px 24px">
+            <span class="thanks-icon">探</span>
+            <h1 class="h-page mt-5" style="font-size:22px">谢谢你告诉参谋</h1>
+            <p class="sm muted mt-3">已记下你去了「白玉粤菜」，这家店的用户选择率会据此更新。感谢你参与这次探店体验。</p>
+            <p class="xs muted mt-5">4 秒后回到首页</p>
+            <div class="progress mt-3" style="margin-inline:auto"><i></i></div>
+            <button type="button" class="btn btn-brand mt-6" data-go="home">立即回首页</button>
+          </section>
+        </main>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const body = document.body;
+    const params = new URLSearchParams(location.search);
+    if (params.get("view") === "board") {
+      body.dataset.view = "board";
+    }
+
+    function setView(view) {
+      body.dataset.view = view;
+      document.querySelectorAll(".mode-btn").forEach((btn) => {
+        btn.classList.toggle("is-on", btn.dataset.mode === view);
+      });
+      const url = new URL(location.href);
+      if (view === "board") url.searchParams.set("view", "board");
+      else url.searchParams.delete("view");
+      history.replaceState(null, "", url);
+    }
+
+    function show(id) {
+      document.querySelectorAll(".frame").forEach((frame) => {
+        frame.classList.toggle("is-active", frame.dataset.screen === id);
+      });
+      document.querySelectorAll(".nav-btn").forEach((btn) => {
+        btn.classList.toggle("is-current", btn.dataset.nav === id);
+      });
+      if (body.dataset.view === "flow") {
+        window.scrollTo(0, 0);
+      }
+    }
+
+    document.querySelectorAll(".mode-btn").forEach((btn) => {
+      btn.addEventListener("click", () => setView(btn.dataset.mode));
+    });
+    document.querySelectorAll(".nav-btn").forEach((btn) => {
+      btn.addEventListener("click", () => show(btn.dataset.nav));
+    });
+    document.querySelectorAll("[data-go]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-go");
+        show(target);
+        if (target === "analyzing") {
+          window.setTimeout(() => show("results"), 1600);
+        }
+      });
+    });
+
+    const input = document.getElementById("home-query");
+    const ask = document.getElementById("ask-btn");
+    function syncAsk() {
+      const on = input.value.trim() !== "";
+      ask.style.opacity = on ? "1" : "0.4";
+      ask.style.pointerEvents = on ? "auto" : "none";
+    }
+    input.addEventListener("input", syncAsk);
+    document.querySelectorAll("[data-fill]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        input.value = btn.getAttribute("data-fill");
+        document.querySelectorAll(".chip[data-fill]").forEach((chip) => {
+          chip.classList.toggle("is-on", chip === btn);
+        });
+        syncAsk();
+        input.focus();
+      });
+    });
+    syncAsk();
+    if (body.dataset.view === "board") setView("board");
+  </script>
+</body>
+</html>

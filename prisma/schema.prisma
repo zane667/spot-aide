@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL") // CLI / 本地 sqlite；线上运行时见 lib/prisma.ts 的 Turso adapter
+}
+
+/// 商家：探店决策的候选主体
+model Merchant {
+  id       String @id @default(cuid())
+  name     String // 名称
+  cuisine  String // 菜系，如粤菜 / 火锅 / 日料
+  avgPrice Int // 人均（元）
+  address  String // 地址
+  district String // 商圈
+
+  /// 由评价算出的先验选择率，写入后按曝光/选择动态平滑展示
+  priorRate   Float @default(0.5)
+  impressions Int   @default(0)
+  selections  Int   @default(0)
+
+  reviews              Review[]
+  recommendImpressions RecommendImpression[]
+  choices              UserChoice[]
+
+  @@index([cuisine])
+  @@index([district])
+  @@index([avgPrice])
+  @@index([name])
+}
+
+/// 一次推荐场次：同一轮只能确认去一家店
+model RecommendSession {
+  id        String   @id @default(cuid())
+  needsJson String
+  createdAt DateTime @default(now())
+
+  impressions RecommendImpression[]
+  choice      UserChoice?
+}
+
+/// 本轮结果页露出的商家（计一次曝光）
+model RecommendImpression {
+  id         String @id @default(cuid())
+  sessionId  String
+  merchantId String
+  rank       Int?
+
+  session  RecommendSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  merchant Merchant         @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, merchantId])
+  @@index([merchantId])
+}
+
+/// 用户确认实际去了哪家；sessionId 唯一，保证每轮只记一次
+model UserChoice {
+  id         String   @id @default(cuid())
+  sessionId  String   @unique
+  merchantId String
+  source     String // card | search
+  createdAt  DateTime @default(now())
+
+  session  RecommendSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  merchant Merchant         @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+
+  @@index([merchantId])
+}
+
+/// 评价：挂在商家下，供语义分析与避坑提取
+model Review {
+  id          String     @id @default(cuid())
+  merchantId  String
+  merchant    Merchant   @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+  rating      Int // 评分 1-5
+  content     String // 评价正文
+  publishedAt DateTime // 发布时间
+  sentiment   Sentiment // 情感极性
+
+  tags Tag[]
+
+  @@index([merchantId])
+  @@index([publishedAt])
+  @@index([sentiment])
+}
+
+/// 评价标签：从单条评价抽出的短语（安静、有包间、等位久等）
+model Tag {
+  id       String @id @default(cuid())
+  reviewId String
+  review   Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  name     String // 标签名
+
+  @@index([reviewId])
+  @@index([name])
+}
+
+enum Sentiment {
+  positive
+  neutral
+  negative
+}
